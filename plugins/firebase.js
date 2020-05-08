@@ -1,6 +1,5 @@
 import firebase from 'firebase'
 import 'firebase/app'
-import 'firebase/firestore'
 
 const config = {
   projectId: process.env.FIREBASE_PROJECT_ID

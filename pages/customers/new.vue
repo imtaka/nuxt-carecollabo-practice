@@ -11,6 +11,11 @@
     <div class="form">
       <form v-on:submit.prevent="add">
         <input v-model="name">
+        <select v-model="gender">
+          <option disabled value="">性別</option>
+          <option>男性</option>
+          <option>女性</option>
+        </select>
         <button>利用者新規登録</button>
       </form>
     </div>
@@ -19,9 +24,10 @@
 
 <script>
 export default {
-   data: function() {
+    data: function() {
       return {
-        name: ''
+        name: '',
+        gender: ''
       }
     },
   created: function() {
@@ -29,8 +35,9 @@ export default {
   },
   methods: {
     add() {
-        this.$store.dispatch('customers/add', this.name)
+        this.$store.dispatch('customers/add', {name:this.name, gender:this.gender})
         this.name = ''
+        this.gender = ''
       }
   }
 

@@ -12,10 +12,11 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('customers', customersRef)
     }),
-  add: firestoreAction((context, name) => {
+  add: firestoreAction((context, {name, gender}) => {
     if(name.trim()) {
       customersRef.add({
         name: name,
+        gender: gender,
         created: firebase.firestore.FieldValue.serverTimestamp()
           })
         }
