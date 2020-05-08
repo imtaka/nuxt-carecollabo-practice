@@ -9,8 +9,24 @@
         　　</a>
         </div>
         <h2>利用者一覧</h2>
+        <div>
+        <ul>
+          <li v-for="customer in customers" :key="customer.id">
+            {{ customer.name }}
+          </li>
+        </ul>
+        </div>
     </div>
 </template>
 <script>
-export default {}
+export default {
+  created: function() {
+    this.$store.dispatch('customers/init')
+  },
+    computed: {
+      customers() {
+        return this.$store.state.customers.customers
+      }
+    }
+}
 </script>
