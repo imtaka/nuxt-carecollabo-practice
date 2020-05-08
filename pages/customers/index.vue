@@ -12,7 +12,7 @@
         <div>
         <ul>
           <li v-for="customer in customers" :key="customer.id">
-            {{ customer.name }}
+            {{ customer.name }} {{ customer.gender }}
           </li>
         </ul>
         </div>

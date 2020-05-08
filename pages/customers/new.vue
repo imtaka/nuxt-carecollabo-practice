@@ -16,6 +16,8 @@
           <option>男性</option>
           <option>女性</option>
         </select>
+        <input type="number" v-model="age">
+
         <button>利用者新規登録</button>
       </form>
     </div>
@@ -27,7 +29,8 @@ export default {
     data: function() {
       return {
         name: '',
-        gender: ''
+        gender: '',
+        age: 0
       }
     },
   created: function() {
@@ -35,9 +38,10 @@ export default {
   },
   methods: {
     add() {
-        this.$store.dispatch('customers/add', {name:this.name, gender:this.gender})
+        this.$store.dispatch('customers/add', {name:this.name, gender:this.gender,age:this.age})
         this.name = ''
         this.gender = ''
+        this.age = ''
       }
   }
 
