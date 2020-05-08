@@ -6,22 +6,26 @@
         nuxt-carecollabo-practice
       </h1>
       <h2 class="subtitle">
-        My primo Nuxt.js project
+        研修用
       </h2>
       <div class="links">
         <a
-          href="https://nuxtjs.org/"
-          target="_blank"
+          href="/"
           class="button--green"
         >
-          Documentation
+          スタッフ新規登録（未設定）
         </a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
+          href="/"
           class="button--grey"
         >
-          GitHub
+          スタッフ　サインイン（未設定）
+        </a>
+        <a
+          href="/customers"
+          class="button--grey"
+        >
+          利用者一覧
         </a>
       </div>
     </div>
