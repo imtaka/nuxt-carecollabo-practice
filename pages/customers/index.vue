@@ -12,7 +12,7 @@
         <div>
         <ul>
           <li v-for="customer in customers" :key="customer.id">
-          <div>名前:<nuxt-link :to="`/items/${customer.id}`">{{ customer.name }}</nuxt-link></div>
+          <div>名前:<nuxt-link :to="`/customers/${customer.id}`">{{ customer.name }}</nuxt-link></div>
           </li>
         </ul>
         </div>

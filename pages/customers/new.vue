@@ -10,7 +10,10 @@
     </div>
     <div class="form">
       <form v-on:submit.prevent="add">
+        <validation-provider rules="required" v-slot="{ errors }">
         <input v-model="name">
+        <span>{{ errors[0] }}</span>
+        </validation-provider>
         <select v-model="gender">
           <option disabled value="">性別</option>
           <option>男性</option>
@@ -26,9 +29,18 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate';
+import { extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
+
+extend('required', {
+  ...required,
+  message: '名前は必要です'
+});
+
 export default {
   components: {
-    ValidationProvider
+    ValidationProvider,
+    required
   },
     data: function() {
       return {
