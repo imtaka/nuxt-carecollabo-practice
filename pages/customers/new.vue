@@ -10,7 +10,7 @@
     </div>
     <div class="form">
       <form v-on:submit.prevent="add">
-        <validation-provider rules="required" v-slot="{ errors }">
+        <validation-provider rules="required|min:2|max:20" v-slot="{ errors }">
         <input v-model="name">
         <span>{{ errors[0] }}</span>
         </validation-provider>
@@ -19,7 +19,10 @@
           <option>男性</option>
           <option>女性</option>
         </select>
+        <validation-provider rules="required|min_value:40|max_value:125" v-slot="{ errors }">
         <input type="number" v-model="age">
+        <span>{{ errors[0] }}</span>
+        </validation-provider>
 
         <button>利用者新規登録</button>
       </form>
@@ -30,17 +33,37 @@
 <script>
 import { ValidationProvider } from 'vee-validate';
 import { extend } from 'vee-validate';
+import { min } from 'vee-validate/dist/rules';
+import { max } from 'vee-validate/dist/rules';
+import { min_value } from 'vee-validate/dist/rules';
+import { max_value } from 'vee-validate/dist/rules';
 import { required } from 'vee-validate/dist/rules';
 
 extend('required', {
   ...required,
   message: '名前は必要です'
 });
+extend('min', {
+  validate(value, args) {
+    return value.length >= args.length;
+  },
+  params: ['length']
+});
+extend('max', {
+  validate(value, args) {
+    return value.length <= args.length;
+  },
+  params: ['length']
+});
 
 export default {
   components: {
     ValidationProvider,
-    required
+    required,
+    max,
+    min,
+    min_value,
+    max_value
   },
     data: function() {
       return {
