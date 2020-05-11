@@ -19,7 +19,7 @@
           <option>男性</option>
           <option>女性</option>
         </select>
-        <validation-provider rules="required|min_value:40|max_value:125" v-slot="{ errors }">
+        <validation-provider rules="min_value:40|max_value:125" v-slot="{ errors }">
         <input type="number" v-model="age">
         <span>{{ errors[0] }}</span>
         </validation-provider>
@@ -31,13 +31,8 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate';
-import { extend } from 'vee-validate';
-import { min } from 'vee-validate/dist/rules';
-import { max } from 'vee-validate/dist/rules';
-import { min_value } from 'vee-validate/dist/rules';
-import { max_value } from 'vee-validate/dist/rules';
-import { required } from 'vee-validate/dist/rules';
+import { ValidationProvider, extend } from 'vee-validate';
+import { min, max, required, min_value,max_value } from 'vee-validate/dist/rules';
 
 extend('required', {
   ...required,
